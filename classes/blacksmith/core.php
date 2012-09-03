@@ -97,7 +97,7 @@ class Blacksmith_Core {
 	 * @return void
 	 * @author 
 	 **/
-	public function forge($db = null)
+	public function sql($db = null)
 	{
 		if ($db === null)
 		{
@@ -105,6 +105,19 @@ class Blacksmith_Core {
 		}
 
 		$this->_compile($db);
+
+		return $this->_sql;
+	}
+
+	/**
+	 * undocumented function
+	 *
+	 * @return void
+	 * @author 
+	 **/
+	public function forge($db = null)
+	{
+		$this->sql($db);
 
 		$db->query(null, $this->_sql);
 	}
